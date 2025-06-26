@@ -18,7 +18,7 @@ app.post('/process-receipt', upload.single('image'), async (req, res) => {
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro-vision' })
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
     const prompt = `Extract information from the receipt image along with data1: ${data1} and data2: ${data2}.`
     const result = await model.generateContent([prompt, { inlineData: { data: imageBuffer.toString('base64'), mimeType: req.file.mimetype } }])
     const response = await result.response
